@@ -20,7 +20,8 @@ module.exports = function(grunt) {
              files: [
 //                "Gruntfile.js",
 //                 "PatternMatcher.js"
-                 "*.js"
+                 "*.js",
+                 "lib/**/*.js"
             ]
         },
         uglify: {
