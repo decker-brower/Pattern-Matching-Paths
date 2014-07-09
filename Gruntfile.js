@@ -19,7 +19,8 @@ module.exports = function(grunt) {
         jshint: {
              files: [
                  "*.js",
-                 "lib/**/*.js"
+                 "lib/**/*.js",
+                 "tests/*.js"
             ]
         },
         uglify: {
