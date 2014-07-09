@@ -18,8 +18,6 @@ module.exports = function(grunt) {
         },
         jshint: {
              files: [
-//                "Gruntfile.js",
-//                 "PatternMatcher.js"
                  "*.js",
                  "lib/**/*.js"
             ]
