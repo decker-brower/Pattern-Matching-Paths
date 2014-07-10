@@ -20,8 +20,16 @@ module.exports = function(grunt) {
              files: [
                  "*.js",
                  "lib/**/*.js",
-                 "tests/*.js"
+                 "test/**/*.js"
             ]
+        },
+        mochaTest: {
+            test: {
+                options: {
+                    reporter: 'spec'
+                },
+                src: ['test/mocha/*.js']
+            }
         },
         uglify: {
             PatternMatcher: {
@@ -37,10 +45,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-uglify");
+    grunt.loadNpmTasks('grunt-mocha-test');
 
 
     // Test task.
-    grunt.registerTask("test", ["jshint"]);
+    grunt.registerTask("test", ["mochaTest", "jshint"]);
 
     // Full distribution task.
     grunt.registerTask("dist", ["concat", "uglify"]);

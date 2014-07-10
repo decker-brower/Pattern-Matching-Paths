@@ -29,9 +29,9 @@ Generator.getPatterns = function() {
         this.patternArray.push(this.getRandomPattern());
     }
     
-    var cleanArray = this.cleanArray(this.patternArray);
+//    var cleanArray = this.cleanArray(this.patternArray);
     
-    cleanArray.forEach(function(pattern) {
+    this.patternArray.forEach(function(pattern) {
         patterns += pattern;
     });
 
@@ -53,7 +53,7 @@ Generator.getRandomPattern = function() {
             pattern += char;
         }
         
-        pattern += "/";
+        pattern += ",";
     }
     
     return pattern + "\n";
@@ -67,9 +67,9 @@ Generator.getPaths = function() {
         this.pathArray.push(this.getRandomPath());
     }
     
-    var cleanArray = this.cleanArray(this.pathArray);
+//    var cleanArray = this.cleanArray(this.pathArray);
     
-    cleanArray.forEach(function(path) {
+    this.pathArray.forEach(function(path) {
         paths += path;
     });
     
@@ -90,7 +90,7 @@ Generator.getRandomPath = function() {
             path += char;
         }
         
-        path += ",";
+        path += "/";
     }
     
     return path + "\n";
