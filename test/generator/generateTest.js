@@ -6,7 +6,7 @@ var Generator = module.exports = {};
 Generator.init = function(patternCount, pathCount) {
     this.patternCount = patternCount;
     this.pathCount = pathCount;
-    this.characters = "qwertyuiopasdfghjklzxcvbnm";
+    this.characters = "qwertyuiopasdfghjklzxcvbnm!@#$%^&()_+=-0987654321{}][|'\";:<.>?****************";
     this.patternArray = [];
     this.pathArray = [];
 };
@@ -19,6 +19,8 @@ Generator.createNewTest = function() {
     this.test += this.pathCount + "\n";
 
     this.test += this.getPaths();
+    
+    this.test = this.test.slice(0, -2);
 };
 
 Generator.getPatterns = function() {
@@ -39,16 +41,19 @@ Generator.getPatterns = function() {
 };
 
 Generator.getRandomPattern = function() {
-    var random1 = this.getRandomInt(1, 6);
+    var random1 = this.getRandomInt(1, 3);
     var pattern = "";
     var random2;
     var char;
     
     while(random1--) {
-        random2 = this.getRandomInt(1, 12);
+        random2 = this.getRandomInt(1, 3);
         
         while(random2--) {
             char = this.characters[this.getRandomInt(0, this.characters.length - 1)];
+            
+            if(char === "*")
+                random2 = false;
             
             pattern += char;
         }
@@ -77,13 +82,13 @@ Generator.getPaths = function() {
 };
 
 Generator.getRandomPath = function() {
-    var random1 = this.getRandomInt(1, 6);
+    var random1 = this.getRandomInt(1, 3);
     var path = "";
     var random2;
     var char;
     
     while(random1--) {
-        random2 = this.getRandomInt(1, 12);
+        random2 = this.getRandomInt(1, 3);
         while(random2--) {
             char = this.characters[this.getRandomInt(0, this.characters.length - 1)];
             
@@ -118,7 +123,7 @@ var args = process.argv.splice(2);
 
 //if invalid number of arguments were given then display a helpful error message and kill the process
 if (args.length < 3) {
-  console.log('Usage: node ' + process.argv[1] + ' FILENAME NUMBEROFPATTERNS NUMBEROFPATHS');
+  console.log('Usage: node ' + process.argv[1] + ' OUTPUTFILENAME NUMBEROFPATTERNS NUMBEROFPATHS');
   process.exit(1);
 }
 

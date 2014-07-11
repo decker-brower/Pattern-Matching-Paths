@@ -18,18 +18,6 @@ describe("PatternMatchingPaths", function(){
 //            });
 //        });
 //        
-//        describe("PatternMatcher.buildPatternArray", function() {
-//            it("", function() {
-//                assert.equal([], PatternMatcher.buildPatternArray(););
-//            });
-//        });
-//        
-//        describe("PatternMatcher.buildPathArray", function() {
-//            it("", function() {
-//                
-//            });
-//        });
-//        
 //        describe("PatternMatcher.outputMatches", function() {
 //            it("", function() {
 //                
@@ -82,28 +70,22 @@ describe("PatternMatchingPaths", function(){
             it("should return an array of the best matching patterns for given paths and patterns", function() {
                 var pathArray = ["w/x/y/z", "a/b/c", "foo", "foo/bar", "foo/bar/baz"];
                 var patternArray = ["*,b,*", "a,*,*", "*,*,c", "foo,bar,baz", "w,x,*,*", "*,x,y,z"];
-                var expectedResult = ["*,x,y,z", "a,*,*", "NO MATCH", "NO MATCH", "foo,bar,baz"];
+                var expectedResult = ["foo,bar,baz", "NO MATCH", "NO MATCH", "a,*,*", "*,x,y,z"];
                 
                 assert.deepEqual(expectedResult, Matcher.findMatches(pathArray, patternArray));
             });
         });
-        
-        describe("Matcher.isMatch", function() {
+
+        describe("Matcher.getMatchObj", function() {
             it("should return true or false", function() {
                 var goodPattern = "w,x,*,*";
                 var badPattern = "w,x,z,y";
                 var path = "w/x/y/z";
+                var goodMatch = Matcher.getMatchObj(path, goodPattern);
+                var badMatch = Matcher.getMatchObj(path, badPattern);
                 
-                assert.equal(true, Matcher.isMatch(path, goodPattern));
-                assert.equal(false, Matcher.isMatch(path, badPattern));
-            });
-        });
-        
-        describe("Matcher.findBestMatch", function() {
-            it("should return the best pattern given an array of patterns", function() {
-                var patternArray = ["w,x,*,*", "*,x,y,z"];
-                
-                assert.equal("*,x,y,z", Matcher.findBestMatch(patternArray));
+                assert.equal(true, goodMatch.isMatch);
+                assert.equal(false, badMatch.isMatch);
             });
         });
     });
