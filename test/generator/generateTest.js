@@ -2,6 +2,8 @@
 
 // The module to be exported.
 var Generator = module.exports = {};
+//import the progress module
+var ProgressBar = require("progress");
 
 Generator.init = function(patternCount, pathCount) {
     this.patternCount = patternCount;
@@ -26,9 +28,16 @@ Generator.createNewTest = function() {
 Generator.getPatterns = function() {
     var patterns = "";
     var i = this.patternCount;
+    var bar = new ProgressBar('  Generating random patterns [:bar] :percent :etas', {
+        complete: '=',
+        incomplete: ' ',
+        width: 40,
+        total: parseInt(this.patternCount)
+    });
     
     while(i--) {
         this.patternArray.push(this.getRandomPattern());
+        bar.tick();
     }
     
     this.patternArray.forEach(function(pattern) {
@@ -65,9 +74,16 @@ Generator.getRandomPattern = function() {
 Generator.getPaths = function() {
     var paths = "";
     var i = this.pathCount;
+    var bar = new ProgressBar('  Generating random paths [:bar] :percent :etas', {
+        complete: '=',
+        incomplete: ' ',
+        width: 40,
+        total: parseInt(this.pathCount)
+    });
     
     while(i--) {
         this.pathArray.push(this.getRandomPath());
+        bar.tick();
     }
     
 //    var cleanArray = this.cleanArray(this.pathArray);
