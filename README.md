@@ -4,7 +4,13 @@ Pattern-Matching Paths
 Usage
 -----
 
-Clone the repo.
+Clone the repo
+
+    git clone https://github.com/wh1t3w0lf21/Pattern-Matching-Paths.git
+    
+Install dependencies
+
+    npm install
 
 Run the pattern matcher with
 
