@@ -28,7 +28,7 @@ Generator.createNewTest = function() {
 Generator.getPatterns = function() {
     var patterns = "";
     var i = this.patternCount;
-    var bar = new ProgressBar('  Generating random patterns [:bar] :percent :etas', {
+    var bar = new ProgressBar('  Generating random patterns [:bar] :percent elapsed: :elapsed estimated: :etas', {
         complete: '=',
         incomplete: ' ',
         width: 40,
@@ -74,7 +74,7 @@ Generator.getRandomPattern = function() {
 Generator.getPaths = function() {
     var paths = "";
     var i = this.pathCount;
-    var bar = new ProgressBar('  Generating random paths [:bar] :percent :etas', {
+    var bar = new ProgressBar('  Generating random paths [:bar] :percent elapsed: :elapsed estimated: :etas', {
         complete: '=',
         incomplete: ' ',
         width: 40,
