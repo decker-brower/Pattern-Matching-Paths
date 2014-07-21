@@ -6,7 +6,7 @@ var Generator = module.exports = {};
 Generator.init = function(patternCount, pathCount) {
     this.patternCount = patternCount;
     this.pathCount = pathCount;
-    this.characters = "qwertyuiopasdfghjklzxcvbnm!@#$%^&()_+=-0987654321{}][|'\";:<.>?****************";
+    this.characters = "qwertyuiopasdfghjklzxcvbnm!@#$%^&()_+=-0987654321{}][|'\";:<.>?*";
     this.patternArray = [];
     this.pathArray = [];
 };
@@ -31,8 +31,6 @@ Generator.getPatterns = function() {
         this.patternArray.push(this.getRandomPattern());
     }
     
-//    var cleanArray = this.cleanArray(this.patternArray);
-    
     this.patternArray.forEach(function(pattern) {
         patterns += pattern;
     });
@@ -41,7 +39,7 @@ Generator.getPatterns = function() {
 };
 
 Generator.getRandomPattern = function() {
-    var random1 = this.getRandomInt(1, 3);
+    var random1 = this.getRandomInt(1, 13);
     var pattern = "";
     var random2;
     var char;
@@ -82,7 +80,7 @@ Generator.getPaths = function() {
 };
 
 Generator.getRandomPath = function() {
-    var random1 = this.getRandomInt(1, 3);
+    var random1 = this.getRandomInt(1, 13);
     var path = "";
     var random2;
     var char;
@@ -105,17 +103,6 @@ Generator.getRandomPath = function() {
 Generator.getRandomInt = function(min, max)
 {
     return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
-//method to make sure all elements in an array are unique
-Generator.cleanArray = function(a) {
-    var temp = {};
-    for (var i = 0; i < a.length; i++)
-        temp[a[i]] = true;
-    var r = [];
-    for (var k in temp)
-        r.push(k);
-    return r;
 };
 
 //get the arguments we care about

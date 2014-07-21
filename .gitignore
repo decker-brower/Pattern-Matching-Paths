@@ -26,3 +26,4 @@ node_modules
 
 #Test files
 *.text
+test/generator/*.text
